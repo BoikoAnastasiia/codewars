@@ -41,18 +41,25 @@
 
 // console.log(member.getFullName());
 
-class Person {
-  constructor(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-  //   getFullName() {
-  //     return `${this.firstName} ${this.lastName}`;
-  //   }
-}
-Person.prototype.getFullName = function () {
-  return `${this.firstName} ${this.lastName}`;
-};
-const member = new Person('Lydia', 'Hallie');
+// class Person {
+//   constructor(firstName, lastName) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//   }
+//   //   getFullName() {
+//   //     return `${this.firstName} ${this.lastName}`;
+//   //   }
+// }
+// Person.prototype.getFullName = function () {
+//   return `${this.firstName} ${this.lastName}`;
+// };
+// const member = new Person('Lydia', 'Hallie');
 
-console.log(member.getFullName());
+// console.log(member.getFullName());
+(function () {
+  'use strict';
+
+  var a = (b = 3);
+
+  console.log(a, b);
+})();
