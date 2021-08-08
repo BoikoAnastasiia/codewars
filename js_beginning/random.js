@@ -56,10 +56,15 @@
 // const member = new Person('Lydia', 'Hallie');
 
 // console.log(member.getFullName());
-(function () {
-  'use strict';
+// (function () {
+//   'use strict';
 
-  var a = (b = 3);
+//   var a = (b = 3);
 
-  console.log(a, b);
-})();
+//   console.log(a, b);
+// })();
+'use strict';
+
+window.abc = void 0;
+
+console.log(typeof abc);
