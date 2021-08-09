@@ -1,15 +1,21 @@
-fn1 = function (arr) {
+const arr1 = [1, 2, 3];
+
+const fn1 = function (arr) {
   arr = [];
+  console.log(arr1 == arr);
 };
-
-var fn2 = function (arr) {
-  arr.length = 0;
-};
-
-var arr1 = [1, 2, 3];
-var arr2 = [5, 6, 7];
 
 fn1(arr1);
-fn2(arr2);
 
-console.log(arr1.length, arr2.length); // 3 0
+console.log(arr1.length); // 3
+
+//////////////////////////////////////
+
+// const fn2 = function (str) {
+//   str = 'sssssssssssssssssssssssssss';
+// };
+
+// const str = '222';
+// fn2(str);
+
+// console.log(str.length); // 3
