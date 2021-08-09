@@ -27,10 +27,56 @@
 // console.log((1, 5 - 1) * 2);
 // console.log(1, 5 - 1);
 
-var Employee = {
-  company: 'xyz',
-};
-var emp1 = Object.create(Employee);
-console.log(emp1);
+// var Employee = {
+//   company: 'xyz',
+// };
+// var emp1 = Object.create(Employee);
+// console.log(emp1);
 // delete emp1.company;
 // console.log(emp1.company);
+// (function (foo) {
+//   return typeof foo.bar;
+// })({ foo: { bar: 1 } });
+
+// function go(foo) {
+//   return typeof foo.bar;
+// }
+
+// const a = { foo: { bar: 1 } };
+
+// console.log(go(a));
+// (function f(f) {
+//   return typeof f();
+// })(function () {
+//   return 1;
+// });
+
+// var foo = {
+//   bar: function () {
+//     return this.baz;
+//   },
+//   baz: 1,
+// };
+// (function () {
+//   return typeof arguments[0]();
+// })(foo.bar);
+
+// var foo = {
+//   bar: function () {
+//     return this.baz;
+//   },
+//   baz: 1,
+// };
+// typeof foo.bar();
+
+// (function f() {
+//   function f() {
+//     return 1;
+//   }
+//   return f();
+//   function п() {
+//     return 2;
+//   }
+// })();
+
+with (function (x, undefined) {}) length;
