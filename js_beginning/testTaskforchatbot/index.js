@@ -62,10 +62,30 @@
 //   new Error`You should pass at least ${count[0]} and no more than ${count[1]} parameters`();
 // };
 
+// const withParamsCountValidation = (count, func) => {
+//   function func() {
+//     checkFunc.apply(null, arguments);
+//   }
+//   function checkFunc() {
+//     return [arguments]; //arguments[0] = 1, etc
+//   }
+//   if (typeof count === 'number' && checkFunc().length !== count.length) {
+//     new Error`You should pass no more than ${count} parameters`();
+//   }
+//   if (
+//     Array.isArray(count) &&
+//     count.length === 2 &&
+//     checkFunc().length >= count[0] &&
+//     checkFunc().length <= count[1]
+//   ) {
+//     true;
+//   }
+//   new Error`You should pass at least ${count[0]} and no more than ${count[1]} parameters`();
+// };
+
 const withParamsCountValidation = (count, func) => {
-  function checkFunc() {
-    func.apply(null, arguments);
-    return [...arguments];
+  function checkFunc(args1, ...args) {
+    return func(args1, ...args);
   }
   if (typeof count === 'number' && checkFunc().length !== count.length) {
     new Error`You should pass no more than ${count} parameters`();
@@ -81,7 +101,11 @@ const withParamsCountValidation = (count, func) => {
   new Error`You should pass at least ${count[0]} and no more than ${count[1]} parameters`();
 };
 
-console.log(returnArguments(1, 4, 5));
+console.log(withParamsCountValidation(3, test(1, 2)));
+
+function test(som, som2, som3) {
+  return som + som2 + som3;
+}
 
 /**
  * Should return flatten array
