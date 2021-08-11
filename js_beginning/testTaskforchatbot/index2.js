@@ -11,11 +11,11 @@ const sortArrays = (arr1, arr2) => {
   const thirdAr = [...arr1, ...arr2];
 
   for (let i = 0; i < thirdAr.length; i++) {
-    if (thirdAr[i] > thirdAr[i + 1]) {
-      thirdAr[i] = thirdAr[i + 1];
+    while (thirdAr[i] > thirdAr[i + 1]) {
+      [thirdAr[i], thirdAr[i + 1]] = [thirdAr[i + 1], thirdAr[i]];
+      i -= 2;
     }
   }
-
   return thirdAr;
 };
 
