@@ -84,50 +84,31 @@
 // };
 
 const withParamsCountValidation = (count, func) => {
-  function checkFunc(args1, ...args) {
-    return func(args1, ...args);
-  }
-  if (typeof count === 'number' && checkFunc().length !== count.length) {
-    new Error`You should pass no more than ${count} parameters`();
-  }
-  if (
-    Array.isArray(count) &&
-    count.length === 2 &&
-    checkFunc().length >= count[0] &&
-    checkFunc().length <= count[1]
-  ) {
-    true;
-  }
-  new Error`You should pass at least ${count[0]} and no more than ${count[1]} parameters`();
+  func = function () {
+    return function (...args) {
+      console.log(args);
+      if (typeof count === 'number' && args.length !== count) {
+        throw new Error(`You should pass no more than ${count} parameters`);
+      }
+
+      if (
+        Array.isArray(count) &&
+        count.length === 2 &&
+        args.length >= count[0] &&
+        args.length <= count[1]
+      ) {
+        return true;
+      }
+      throw new Error(
+        `You should pass at least ${count[0]} and no more than ${count[1]} parameters`
+      );
+    };
+  };
+  return func(count);
 };
 
-console.log(withParamsCountValidation(3, test(1, 2)));
+console.log(withParamsCountValidation(3, test));
 
 function test(som, som2, som3) {
   return som + som2 + som3;
 }
-
-/**
- * Should return flatten array
- * Should flatten deep nested arrays as well
- * @param {*} source array to flatten
- * const example = [1,2,[1,2,3],4]
- * flatten(example) -> [1,2,1,2,3,4]
- */
-
-// const example = [
-//   1,
-//   2,
-//   'wdwdww',
-//   [1, 'adawdddddddad', 3, [1, 'awdadawaw', 3]],
-//   1,
-//   2,
-//   3,
-//   [1, 2, 3],
-// ];
-// const flatten = source => {
-//   return JSON.stringify(source)
-//     .toString()
-//     .match(/\d/gi)
-//     .map(el => +el);
-// };
