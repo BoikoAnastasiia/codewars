@@ -1,16 +1,34 @@
 Array.prototype.square = function () {
-  return this.map(el => el * el);
+  const newAr = this;
+  return newAr.map(el => el * el);
 };
 
 Array.prototype.cube = function () {
-  return this.map(el => el * el * el);
+  const newAr = this;
+  return newAr.map(el => el * el * el);
+};
+
+Array.prototype.average = function () {
+  const newAr = this;
+  return newAr.length > 0
+    ? newAr.reduce((acc, value) => acc + value) / newAr.length
+    : NaN;
 };
 
 var numbers = [1, 2, 3, 4, 5];
 console.log(numbers.average());
 
-Array.prototype.average = function () {
-  return this.length > 0
-    ? this.reduce((acc, value) => (acc + value) / this.length)
-    : NaN;
+Array.prototype.sum = function () {
+  const newAr = this;
+  return newAr.reduce((acc, value) => acc + value);
+};
+
+Array.prototype.even = function () {
+  const newAr = this;
+  return newAr.filter(el => (el % 2 === 0 ? el : null));
+};
+
+Array.prototype.odd = function () {
+  const newAr = this;
+  return newAr.filter(el => (el % 2 !== 0 ? el : null));
 };
