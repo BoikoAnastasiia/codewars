@@ -7,17 +7,21 @@ Array.prototype.groupBy = function (fn) {
   }
 
   return this.reduce((acc, item, index, array) => {
-    acc[item] = [...array.filter(el => el === item)];
+    let objIndex = fn(item);
+
+    console.log(objIndex);
+    acc[objIndex] = [...array.filter(el => fn(el) === fn(item))];
     return acc;
   }, {});
 };
 
-console.log([1, 2, 3, 2, 4, 1, 5, 1, 6].groupBy());
+console.log(
+  [1, 2, 3, 2, 4, 1, 5, 1, 6].groupBy(function (val) {
+    return val % 3;
+  })
+);
 // {
-//   1: [1, 1, 1],
-//   2: [2, 2],
-//   3: [3],
-//   4: [4],
-//   5: [5],
-//   6: [6]
+//   0: [3, 6],
+//   1: [1, 4, 1, 1],
+//   2: [2, 2, 5]
 // }
