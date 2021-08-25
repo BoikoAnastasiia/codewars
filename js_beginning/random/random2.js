@@ -80,3 +80,9 @@
 // })();
 
 with (function (x, undefined) {}) length;
+
+'use strict'
+var x = 10
+delete x
+// console.log(x)
+console.log({} + {})
