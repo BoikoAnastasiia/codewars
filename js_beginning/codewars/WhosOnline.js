@@ -18,7 +18,8 @@ const friends = [
 
 const whosOnline = friends => {
   return friends.reduce((acc, val) => {
-    acc['online'] = val;
+    acc['online'] = friends.filter(val => val.status === 'online');
+    return acc;
   }, {});
 };
 
