@@ -17,8 +17,12 @@ const friends = [
 ];
 
 const whosOnline = friends => {
+  let usernames = friends
+    .filter(val => val.status === 'online')
+    .map(el => el.username);
+  console.log(usernames);
   return friends.reduce((acc, val) => {
-    acc['online'] = friends.filter(val => val.status === 'online');
+    acc['online'] = usernames;
     return acc;
   }, {});
 };
