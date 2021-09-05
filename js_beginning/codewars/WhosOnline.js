@@ -2,7 +2,7 @@ const friends = [
   {
     username: 'David',
     status: 'online',
-    lastActivity: 10,
+    lastActivity: 110,
   },
   {
     username: 'Lucy',
@@ -21,7 +21,7 @@ const whosOnline = friends => {
     el.lastActivity > 10 && el.status === 'online' ? (el.status = 'away') : null
   );
 
-  const usernames = friends
+  const online = friends
     .filter(val => val.status === 'online')
     .map(el => el.username);
 
@@ -34,7 +34,7 @@ const whosOnline = friends => {
     .map(el => el.username);
 
   return friends.reduce((acc, val) => {
-    acc['online'] = usernames;
+    online.length > 0 ? (acc['online'] = online) : null;
     acc['offline'] = offline;
     acc['away'] = away;
     return acc;
