@@ -86,3 +86,8 @@ var x = 10
 delete x
 // console.log(x)
 console.log({} + {})
+
+const i = function hui() {
+    return arguments
+}
+console.log(i())
